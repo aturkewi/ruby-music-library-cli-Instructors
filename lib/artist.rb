@@ -31,4 +31,8 @@ class Artist
     song.set_artist = self
   end
 
+  def genres
+    songs.collect { | song | song.genre }.uniq
+  end
+
 end
