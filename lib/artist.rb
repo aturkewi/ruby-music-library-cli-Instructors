@@ -1,11 +1,13 @@
 class Artist
 
   attr_accessor :name
+  attr_reader :songs
 
   @@all ||= []
 
   def initialize(name)
     @name = name
+    @songs = []
   end
 
   def self.create(name)
@@ -22,6 +24,11 @@ class Artist
 
   def save
     @@all << self
+  end
+
+  def add_song(song)
+    songs << song unless songs.include?(song)
+    song.set_artist = self
   end
 
 end
