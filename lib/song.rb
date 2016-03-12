@@ -6,7 +6,11 @@ class Song
 
   def initialize(name)
     @name = name
-    @@all << self
+    # @@all << self
+  end
+
+  def self.create(name)
+    Song.new(name).tap { | s | s.save }
   end
 
   def self.all
@@ -15,6 +19,10 @@ class Song
 
   def self.destroy_all
     @@all = []
+  end
+
+  def save
+    @@all << self
   end
 
 end
