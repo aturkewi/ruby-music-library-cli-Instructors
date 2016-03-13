@@ -25,6 +25,17 @@ class Song
     @@all = []
   end
 
+  def self.new_from_filename(file_name)
+    song_array = file_name.split(" - ")
+    file_artist = Artist.find_or_create_by_name(song_array[0])
+    file_genre = Genre.find_or_create_by_name(song_array[2].gsub(".mp3",""))
+    new(song_array[1], file_artist, file_genre)
+  end
+
+  def self.create_from_filename(file_name)
+    new_from_filename(file_name).tap { | s | s.save }
+  end
+
   def save
     @@all << self
   end
