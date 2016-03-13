@@ -24,6 +24,12 @@ class Genre
     @@all = []
   end
 
+  def self.list_all
+    self.all.each_with_index do | genre, i |
+      puts "#{i+1}. #{genre.name}"
+    end
+  end
+
   def save
     @@all << self
   end

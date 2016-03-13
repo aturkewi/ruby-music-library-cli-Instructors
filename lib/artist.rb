@@ -24,6 +24,12 @@ class Artist
     @@all = []
   end
 
+  def self.list_all
+    self.all.each_with_index do | artist, i |
+      puts "#{i+1}. #{artist.name}"
+    end
+  end
+
   def save
     @@all << self
   end

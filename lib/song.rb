@@ -36,6 +36,12 @@ class Song
     new_from_filename(file_name).tap { | s | s.save }
   end
 
+  def self.list_all
+    self.all.each_with_index do | song, i |
+      puts "#{i+1}. #{song.full_name}"
+    end
+  end
+
   def save
     @@all << self
   end
